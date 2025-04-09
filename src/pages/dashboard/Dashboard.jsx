@@ -48,7 +48,7 @@ const Dashboard = () => {
       <div className="flex flex-col lg:flex-row justify-center items-center gap-0 lg:gap-10">
         <div>
           <div className="py-10 p-5 lg:p-10 card bg-gray-100 w-4/4 mx-auto my-20 shrink-0 shadow-2xl flex flex-col justify-center items-center">
-            <h3 className="my-2 lg:text-3xl font-bold text-gray-600 flex items-center justify-center gap-3">
+            <h3 className="my-2 lg:text-xl font-bold text-purple-500 flex items-center justify-center gap-3">
               <img
                 className="w-10 lg:w-16 rounded-full animate-bounce"
                 src={hi}
@@ -85,7 +85,7 @@ const Dashboard = () => {
             </div>
 
             <button
-              className="my-5 flex items-center justify-center gap-2 w-full p-4 m-4 mx-auto text-sm font-medium text-white capitalize transition-colors duration-300 transform bg-gray-600 rounded-md hover:bg-gray-500 focus:outline-none focus:bg-gray-500"
+              className="btn bg-gray-500 my-5 flex items-center gap-2 text-white"
               onClick={() => setShowModal(true)}
             >
               <FaPen /> Update Your Profile

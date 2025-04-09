@@ -1,7 +1,3 @@
-<div align="center">
-  <img src="https://i.ibb.co.com/QFYHkjW4/Screenshot-4.png" height="400" width="800" alt="Wherelist"/>
-</div>
-
 # WhereIsIt - Client Side
 
 ## Project Purpose

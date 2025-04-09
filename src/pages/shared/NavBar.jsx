@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { FaHome, FaSitemap, FaUserCircle } from "react-icons/fa";
+import { FaDonate, FaHome, FaSitemap, FaUserCircle } from "react-icons/fa";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { FaUserPen } from "react-icons/fa6";
@@ -13,91 +13,55 @@ const NavBar = () => {
 
   const dropdownLinks = (
     <>
-      {user && user.email ? (
-        <div>
-          
-          <li className="text-gray-600 font-bold">
-            <NavLink to={"/myItems"}>
-              <FaSitemap />
-              Manage My Items
-            </NavLink>
-          </li>
-          <li className="text-gray-600 font-bold">
-            <NavLink to={"/dashboard"}>
-              <FaUserPen />
-              Dashboard
-            </NavLink>
-          </li>
-          <li className="text-gray-600 font-bold">
-            <NavLink to={"/recovered"}>
-              <LuBookUser />
-              All Recovered Items
-            </NavLink>
-          </li>
-          <li>
-            <ThemeToggleButton />
-          </li>
-        </div>
-      ) : (
-        <div>
-        </div>
-      )}
-    </>
-  );
-
-  const mainLinks = (
-    <>
-      <li className="text-gray-600 font-bold">
-        <NavLink to={"/"}>
-          <FaHome />
-          Home
-        </NavLink>
-      </li>
-      <li className="text-gray-600 font-bold">
-        <NavLink to={"/items"}>
-          <TiThSmall />
-          Lost & Found Items
-        </NavLink>
-      </li>
-      <li className="text-gray-600 font-bold">
+      <li className="text-gray-700 font-bold">
         <NavLink to={"/addItems"}>
           <MdNoteAdd />
           Add Lost & Found Item
         </NavLink>
       </li>
-
-      {user && user.email ? (
-        <div className="flex">
-          <li className="text-gray-600 font-bold">
-            <NavLink to={"/recovered"}>
-              <LuBookUser />
-              All Recovered Items
-            </NavLink>
-          </li>
-          <li className="text-gray-600 font-bold">
-            <NavLink to={"/myItems"}>
-              <FaSitemap />
-              Manage My Items
-            </NavLink>
-          </li>
-          <li className="text-gray-600 font-bold">
-            <NavLink to={"/dashboard"}>
-              <FaUserPen />
-              Dashboard
-            </NavLink>
-          </li>
-        </div>
-      ) : (
-        ""
-      )}
-      <li className="text-gray-800">
+      <li className="text-gray-700 font-bold">
+        <NavLink to={"/recovered"}>
+          <LuBookUser />
+          All Recovered Items
+        </NavLink>
+      </li>
+      <li className="text-gray-700 font-bold">
+        <NavLink to={"/myItems"}>
+          <FaSitemap />
+          Manage My Items
+        </NavLink>
+      </li>
+      <li className="text-gray-700 font-bold">
+        <NavLink to={"/dashboard"}>
+          <FaUserPen />
+          Dashboard
+        </NavLink>
+      </li>
+      <li>
         <ThemeToggleButton />
       </li>
     </>
   );
 
+  const mainLinks = (
+    <>
+      <li className="text-gray-700 font-bold">
+        <NavLink to={"/"}>
+          <FaHome />
+          Home
+        </NavLink>
+      </li>
+      <li className="text-gray-700 font-bold">
+        <NavLink to={"/items"}>
+          <TiThSmall />
+          Lost & Found Items
+        </NavLink>
+      </li>
+    </>
+  );
+
   return (
-    <div className="navbar sticky top-0 z-50 lg:px-10 justify-between bg-gradient-to-r from-gray-200 to-gray-400 shadow-md">
+    <div className="navbar bg-base-100 lg:px-10 justify-between">
       <div>
         <Link
           to={"/"}
@@ -132,27 +96,21 @@ const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 lg:hidden"
+            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li className="text-gray-700 font-bold">
+            <li className="text-gray-700 font-bold lg:hidden">
               <NavLink to={"/"}>
                 <FaHome />
                 Home
               </NavLink>
             </li>
-            <li className="text-gray-700 font-bold">
+            <li className="text-gray-700 font-bold lg:hidden">
               <NavLink to={"/items"}>
                 <TiThSmall />
                 Lost & Found Items
               </NavLink>
             </li>
-            <li className="text-gray-600 font-bold">
-            <NavLink to={"/addItems"}>
-              <MdNoteAdd />
-              Add Lost & Found Item
-            </NavLink>
-          </li>
-          
+
             {dropdownLinks}
           </ul>
         </div>
@@ -160,22 +118,16 @@ const NavBar = () => {
         {user && user.email ? (
           <button
             onClick={logOut}
-            className="bg-gray-600 hover:bg-gray-700 focus:outline-none text-white p-2 rounded"
+            className="bg-gray-700 text-white p-2 rounded"
           >
             Log Out
           </button>
         ) : (
           <div className="flex flex-col gap-2">
-            <Link
-              className="bg-gray-600 hover:bg-gray-700 focus:outline-none text-white p-1 lg:p-2 text-center rounded"
-              to="/auth/login"
-            >
+            <Link className="bg-gray-700 text-white p-1 lg:p-2 text-center rounded" to="/auth/login">
               Login
             </Link>
-            <Link
-              className="bg-gray-600 hover:bg-gray-700 focus:outline-none text-white p-1 lg:p-2 text-center rounded"
-              to="/auth/register"
-            >
+            <Link className="bg-gray-700 text-white p-1 lg:p-2 text-center rounded" to="/auth/register">
               Register
             </Link>
           </div>

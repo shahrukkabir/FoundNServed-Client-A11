@@ -1,19 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import {
-  FaMapMarkerAlt,
-  FaCalendarAlt,
-  FaTag,
-  FaInfoCircle,
-} from "react-icons/fa";
-import { motion } from "framer-motion";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaMapMarkerAlt, FaCalendarAlt, FaTag, FaInfoCircle } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const MostRecent = ({ items }) => {
   const currentDate = new Date();
 
   const sortedItems = items
-    .filter((item) => item.status !== "Recovered")
-    .map((item) => ({
+    .filter(item => item.status !== "Recovered")
+    .map(item => ({
       key: item._id,
       ...item,
       dateDifference: Math.abs(new Date(item.dateLost) - currentDate),
@@ -22,25 +17,21 @@ const MostRecent = ({ items }) => {
     .slice(0, 6);
 
   return (
-    <div className="mt-10">
+    <div className="p-4">
       <div className="text-center mb-8">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-center w-4/4 lg:w-3/4 mx-auto">
-          Most Recent Lost & Found Items
-        </h2>
-        <p className="text-lg lg:text-xl text-gray-500 mb-6 text-center w-4/4 lg:w-3/4 mx-auto">
-          Browse through the most recent lost and found items posted by users in
-          your area. Whether you've misplaced something valuable or found an
-          item that belongs to someone else, this platform helps you reconnect
-          with lost belongings. Join the community in helping return lost items
-          or locating belongings you've lost. Every post brings someone one step
-          closer to finding what they've been searching for. Explore the
-          listings and make a difference by being part of this compassionate
+        <h2 className="text-3xl font-bold text-gray-800 mb-2">Most Recent Lost & Found Items</h2>
+        <p className="text-lg text-gray-500 w-full lg:w-3/4 mx-auto">
+          Browse through the most recent lost and found items posted by users in your area. Whether you've
+          misplaced something valuable or found an item that belongs to someone else, this platform helps you
+          reconnect with lost belongings. Join the community in helping return lost items or locating
+          belongings you've lost. Every post brings someone one step closer to finding what they've been
+          searching for. Explore the listings and make a difference by being part of this compassionate
           exchange.
         </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {sortedItems.map((item) => (
+        {sortedItems.map(item => (
           <motion.div
             key={item._id}
             initial={{ opacity: 0, scale: 0.8 }}
@@ -48,8 +39,8 @@ const MostRecent = ({ items }) => {
             whileHover={{ scale: 1.05 }}
             transition={{
               duration: 0.6,
-              ease: "easeOut",
-              type: "spring",
+              ease: 'easeOut',
+              type: 'spring',
               stiffness: 300,
             }}
             className="border p-4 rounded-lg shadow-md hover:shadow-lg transition"
@@ -73,8 +64,7 @@ const MostRecent = ({ items }) => {
               <FaMapMarkerAlt className="mr-2 text-red-500" /> {item.location}
             </p>
             <p className="text-sm text-gray-500 mb-2 flex items-center">
-              <FaCalendarAlt className="mr-2 text-yellow-500" />{" "}
-              {new Date(item.dateLost).toLocaleDateString()}
+              <FaCalendarAlt className="mr-2 text-yellow-500" /> {new Date(item.dateLost).toLocaleDateString()}
             </p>
             <Link to={`/items/${item._id}`}>
               <motion.button
@@ -82,7 +72,7 @@ const MostRecent = ({ items }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.3 }}
-                className="w-full px-5 py-4 mt-4 text-sm font-medium text-white capitalize transition-colors duration-300 transform bg-gray-600 rounded-md hover:bg-gray-500 focus:outline-none focus:bg-gray-500"
+                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition w-full flex items-center justify-center"
               >
                 View Details
               </motion.button>
@@ -90,8 +80,8 @@ const MostRecent = ({ items }) => {
           </motion.div>
         ))}
       </div>
-      <Link to={"/items"} className="flex justify-center">
-        <button className="w-1/4 p-2 btn-outline border-1 border-b-2 font-bold text-xl mt-5 rounded-xl shadow-md">
+      <Link to={"/items"} className="bg-sky-300">
+        <button className="w-full p-2 bg-sky-300 font-bold text-xl mt-5">
           See All
         </button>
       </Link>
